@@ -104,9 +104,12 @@ void say(std::string s) {
 /*
  * Use a ranged for to pull a string apart into its bits.
  * */
+
+//Not entirely sure what this function is supposed to do...
+//Instructions not clear
 void pull_apart_string(std::string s) {
     for(char c: s) {
-
+        cout << c << endl;
     }
 }
 
