@@ -1,5 +1,7 @@
 
 #include <iostream>
+#include <string>
+#include <vector>
 #include "pointers.h"
 
 using namespace std;
