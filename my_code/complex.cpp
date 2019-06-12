@@ -62,3 +62,6 @@ double Complex::get_real() const {
 double Complex::get_imag() const {
     return imag;
 }
+
+Complex Complex::operator*(const int i) {
+}

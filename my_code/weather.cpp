@@ -5,9 +5,7 @@
 
 using namespace std;
 
-/*
- * A constructor for weather class.
- * */
+
 Weather::Weather(string nm, GPS loc) : station_nm(nm), my_loc(loc) { //you must declare the name of the string and you must initialize a constructor.
 }
 string Weather::get_name() const {
@@ -23,6 +21,16 @@ void Weather::add_reading(WReading wr) {
     wreadings.push_back(wr);
 }
 
+double WReading::get_tempF() {
+    return (temperature*(9/5)+32);}
+
+double WReading::get_heat_index(){
+    return ((0.5*(get_tempF()*61+(get_tempF()-68)*1.2)));
+}
+
+double WReading::get_wind_chill(){
+    return (35.74+get_tempF()*(0.6216)-35.75*(pow(windspeed,0.16)+0.4275*get_tempF()*pow(windspeed,0.16)));
+}
 
 ostream& operator<<(ostream& os, const GPS& loc){
     os << "Latitude: " << loc.latitude << ", Longitude: "<< loc.longitude; //use the exact names as used in the object; use double arrow to print out every object
@@ -49,8 +57,6 @@ ostream& operator<<(ostream& os,const WReading& wr){
 };
 
 ostream& operator<<(ostream& os, const Weather& w) { //to ensure access, copy and paste to reduce animosity
-    //int r = w.get_rating(); no need to do this
-    // w.set_rating(47); we cannot set a rating because set rating is declared as a constant
     os << "Station Name: " << w.station_nm << endl;
     os << "Rating: " << w.rating << endl;
     os << "Loacation: " << w.my_loc << endl;
