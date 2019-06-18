@@ -3,10 +3,6 @@
 
 using namespace std;
 
-int data[0];
-int sz;
-int capacity;
-
 void print_vector(const MyVec& v) {
     for(int i = 0; i < v.size(); i++) {
         cout << v[i] << endl;
@@ -29,11 +25,15 @@ MyVec::~MyVec() {
 
 }
 
-// MyVec& MyVec::operator=(const MyVec& v2) {
-//     data = v2.data;
-//     sz = v2.size();
-//     capacity = v2.capacity;
-// }
+MyVec& MyVec::operator=(const MyVec& v2) {
+    if(this != &v2) {
+        delete []data;
+        data = v2.data;
+        sz = v2.size();
+        capacity = v2.capacity;
+    }
+    return *this;
+}
 
 /*
  * == is true when every element of the vectors are the same in
