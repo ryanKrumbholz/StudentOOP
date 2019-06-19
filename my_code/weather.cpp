@@ -2,20 +2,50 @@
 #include <string>
 #include <vector>
 #include "weather.h"
+#include "math.h"
 
 using namespace std;
 
 
-Weather::Weather(string nm, GPS loc) : station_nm(nm), my_loc(loc) { //you must declare the name of the string and you must initialize a constructor.
+Weather::Weather(std::string nm, GPS loc) : station_nm(nm), my_loc(loc) { //you must declare the name of the string and you must initialize a constructor.
 }
+
+int Image::image_sz() {
+    return width * height;
+}
+
+Image::Image(int w, int h, std::string flnm) : width(w), height(h) {
+    filename = flnm;
+    image_buf = new char[image_sz()];
+}
+
+Image::Image(const Image& img2) {
+    cout << "Calling copy constructor";
+}
+
+Image::~Image() {
+    delete [] image_buf;
+}
+
 string Weather::get_name() const {
     return station_nm;
 }
 int Weather::get_rating() const {
     return rating;
 }
+void Weather::display_images() {
+    for (WReading wr : wreadings) {
+        wr.display_image();
+    }
+}
+
+void WReading::display_image(){
+    image->display();
+}
+
 void Weather::set_rating(int new_rating) {
-    rating = new_rating;
+    // if (!img) cout << "No image fo reading" << date << endl;
+    // else rating = new_rating;
 }
 void Weather::add_reading(WReading wr) {
     wreadings.push_back(wr);
@@ -29,7 +59,7 @@ double WReading::get_heat_index(){
 }
 
 double WReading::get_wind_chill(){
-    return (35.74+get_tempF()*(0.6216)-35.75*(pow(windspeed,0.16)+0.4275*get_tempF()*pow(windspeed,0.16)));
+    return (35.74+get_tempF()*(0.6216)-35.75*pow(windspeed,0.16)+0.4275*get_tempF()*pow(windspeed,0.16));
 }
 
 ostream& operator<<(ostream& os, const GPS& loc){
@@ -66,9 +96,16 @@ ostream& operator<<(ostream& os, const Weather& w) { //to ensure access, copy an
     return os;
 }
 
-int main() {
-    Image base = Image(100,100, "");
-    Gif gif =  Gif(100,100,"f");
-    Jpeg jpeg = Jpeg(100, 100, "", LOW);
+void Image::display() {
+    cout << "Displaying Image" << endl;
+}
 
+void Jpeg::display() {
+    cout << "Displaying JPEG" << endl;
+}
+void Gif::display() {
+    cout << "Displaying GIF" << endl;
+}
+void Png::display() {
+    cout << "Displaying PNG" << endl;
 }
