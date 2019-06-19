@@ -17,9 +17,12 @@ MyVec::MyVec() {
 }
 
 MyVec::MyVec(const MyVec& v2) {
-    data = v2.data;
     sz = v2.size();
+    data = new int[sz];
     capacity = v2.capacity;
+    for(int i = 0; i < v2.size(); i++) {
+        data[i] = v2[i];
+    }
 }
 
 MyVec::~MyVec() {
@@ -29,9 +32,12 @@ MyVec::~MyVec() {
 MyVec& MyVec::operator=(const MyVec& v2) {
     if(this != &v2) {
         delete []data;
-        data = v2.data;
         sz = v2.size();
         capacity = v2.capacity;
+        data = new int[sz];
+        for(int i = 0; i < v2.size(); i++) {
+            data[i] = v2[i];
+        }
     }
     return *this;
 }
