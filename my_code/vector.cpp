@@ -68,7 +68,12 @@ void MyVec::push_back(int val) {
     for(int i = 0; i < sz; i++) {
         data[i] = temp[i];
     }
-    temp[sz] = val;
+    data = new int[sz*2];
+    for(int i = 0; i < sz; i++) {
+        temp[i] = data[i];
+    }
+    data[sz] = val;
+    capacity = sz*2;
     ++sz;
     
 }
