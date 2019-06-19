@@ -10,6 +10,7 @@ void print_vector(const MyVec& v) {
 }
 
 MyVec::MyVec() {
+    data = new int[sz];
     sz = 0;
     capacity = 0;
 
@@ -22,7 +23,7 @@ MyVec::MyVec(const MyVec& v2) {
 }
 
 MyVec::~MyVec() {
-
+    delete []data;
 }
 
 MyVec& MyVec::operator=(const MyVec& v2) {

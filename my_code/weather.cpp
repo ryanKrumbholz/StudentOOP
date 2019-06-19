@@ -65,3 +65,10 @@ ostream& operator<<(ostream& os, const Weather& w) { //to ensure access, copy an
     }
     return os;
 }
+
+int main() {
+    Image base = Image(100,100, "");
+    Gif gif =  Gif(100,100,"f");
+    Jpeg jpeg = Jpeg(100, 100, "", LOW);
+
+}
