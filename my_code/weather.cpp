@@ -27,6 +27,17 @@ Image::~Image() {
     delete [] image_buf;
 }
 
+Image& Image::operator=(const Image& img2) {
+        if (&img2 != this) {
+            delete image_buf;
+            image_buf = new char[this->image_sz()];
+            for (int i = 0; i < this->image_sz(); i++) {
+                image_buf[i] = img2.image_buf[i];
+        }
+    }
+    return *this;
+}
+
 string Weather::get_name() const {
     return station_nm;
 }
