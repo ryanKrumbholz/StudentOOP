@@ -33,12 +33,15 @@ void add_at_end(Node*& head, int d) {
  * Let's do this recursively!
  * */
 void print_list(ostream& os, const Node* curr) {
+    os << curr;
+    if (curr) {print_list(os, curr->next);}
 }
 
 /*
  * Add a node at the front of a linked list.
  * */
 void add_at_front(Node*& head, int d) {
+    head = new Node(d, head);
 }
 
 
@@ -46,5 +49,7 @@ void add_at_front(Node*& head, int d) {
  * Get the last node of a list.
  * */
 Node* last(Node* head) {
-    return nullptr;
+    if(!head) return nullptr;
+    else if (!head->next) return head;
+    else return last(head->next);
 }
