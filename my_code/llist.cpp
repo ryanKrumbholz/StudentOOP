@@ -91,9 +91,13 @@ Node* reverse(Node* curr) {
     else return new Node(curr->data, duplicate(curr->next));
 }
 
-Node* join(Node* list1, Node* list2) {
-    if (!list1);
+Node* join(Node* curr_list, Node* next_list) {
+    if (!curr_list);
     else {
+        while (curr_list->next != nullptr) {
+            curr_list = curr_list->next;
+        }
+        curr_list->next = next_list;
 
     }
 }
