@@ -52,8 +52,8 @@ int main() {
     Node* dupe = duplicate(head);
     cout << "Duplicate: \n";
     print_list(cout, dupe);
-    assert(duplicate->data == 8);
-    lastp = last(duplicate);
+    assert(dupe->data == 8);
+    lastp = last(dupe);
     assert(lastp->data == 128);
 // now join the reversed list on to the end of the original list:
     head = join(head, reversed);

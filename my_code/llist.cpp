@@ -64,15 +64,15 @@ bool del_head(Node*& head) {
     }
 }
 
-bool del_tail(Node** prev_next) {
-    if ((*prev_next) == nullptr) return false;
-    Node* curr = *prev_next;
+bool del_tail(Node* prev_next) {
+    if ((prev_next) == nullptr) return false;
+    Node* curr = prev_next;
     while (curr->next) {
-        prev_next = &(curr->next);
+        prev_next = (curr->next);
         curr = curr->next;
     }
     delete curr;
-    (*prev_next) = nullptr;
+    (prev_next) = nullptr;
     return true;
 }
 
@@ -89,4 +89,11 @@ Node* duplicate(Node* head) {
 Node* reverse(Node* curr) {
     if (!curr) return nullptr;
     else return new Node(curr->data, duplicate(curr->next));
+}
+
+Node* join(Node* list1, Node* list2) {
+    if (!list1);
+    else {
+
+    }
 }
