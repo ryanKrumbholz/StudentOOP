@@ -53,3 +53,40 @@ Node* last(Node* head) {
     else if (!head->next) return head;
     else return last(head->next);
 }
+
+bool del_head(Node*& head) {
+    if (!head) return false;
+    else {
+        Node* temp = head;
+        head = head -> next;
+        delete temp;
+        return true;
+    }
+}
+
+bool del_tail(Node** prev_next) {
+    if ((*prev_next) == nullptr) return false;
+    Node* curr = *prev_next;
+    while (curr->next) {
+        prev_next = &(curr->next);
+        curr = curr->next;
+    }
+    delete curr;
+    (*prev_next) = nullptr;
+    return true;
+}
+
+Node* duplicate(Node* head) {
+    Node* new_head = nullptr;
+    Node* curr = head;
+    while (curr) {
+        add_at_end(new_head, curr->data);
+        curr = curr->next;
+    }
+    return new_head;
+}
+
+Node* reverse(Node* curr) {
+    if (!curr) return nullptr;
+    else return new Node(curr->data, duplicate(curr->next));
+}
