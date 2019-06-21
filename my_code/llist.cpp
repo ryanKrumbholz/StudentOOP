@@ -92,12 +92,13 @@ Node* reverse(Node* curr) {
 }
 
 Node* join(Node* curr_list, Node* next_list) {
-    if (!curr_list);
+    if (!curr_list) return nullptr;
     else {
-        while (curr_list->next != nullptr) {
-            curr_list = curr_list->next;
+        if (curr_list->next != nullptr) {
+            join(curr_list->next, next_list);
         }
-        curr_list->next = next_list;
-
+        else {
+            curr_list->next = next_list;
+        }
     }
 }
