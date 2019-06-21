@@ -24,8 +24,8 @@ void add_at_end(Node*& head, int d);
 void add_at_front(Node*& head, int d);
 Node* join(Node* curr_list, Node* next_list);
 bool del_head(Node*& head);
-bool del_tail(Node* prev_next);
+bool del_tail(Node*& curr);
 Node* duplicate(Node* head);
-Node* reverse(Node* curr, Node* prev=nullptr);
+Node* reverse(Node* curr, Node* new_next);
 
 #endif

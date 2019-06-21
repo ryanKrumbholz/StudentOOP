@@ -64,15 +64,19 @@ bool del_head(Node*& head) {
     }
 }
 
-bool del_tail(Node* prev_next) {
-    if ((prev_next) == nullptr) return false;
-    Node* curr = prev_next;
-    while (curr->next) {
-        prev_next = (curr->next);
-        curr = curr->next;
+bool del_tail(Node*& curr){
+    if (!curr) {
+        return false;
     }
-    delete curr;
-    (prev_next) = nullptr;
+    else {
+        if (curr->next == nullptr) {
+            delete curr;
+            curr = nullptr;
+        }
+        else {
+            del_tail(curr->next);
+        }
+    }
     return true;
 }
 
@@ -86,19 +90,16 @@ Node* duplicate(Node* head) {
     return new_head;
 }
 
-Node* reverse(Node* curr) {
-    if (!curr) return nullptr;
-    else return new Node(curr->data, duplicate(curr->next));
+Node* reverse(Node* curr, Node* new_next) {
+    if (curr == nullptr) return new_next;
+    else {
+        new_next = new Node(curr->data, new_next);
+        return reverse(curr->next, new_next);
+    }
 }
 
 Node* join(Node* curr_list, Node* next_list) {
     if (!curr_list) return nullptr;
-    else {
-        if (curr_list->next != nullptr) {
-            join(curr_list->next, next_list);
-        }
-        else {
-            curr_list->next = next_list;
-        }
-    }
+    last(curr_list)->next = next_list;
+    return curr_list;
 }
