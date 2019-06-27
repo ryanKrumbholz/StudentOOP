@@ -63,6 +63,11 @@ bool is_odd(int n) { return (n % 2) != 0; }
  * Or, we could have a *functor*!
  * */
 
+class IsOdd {
+    public:
+        bool operator()(int n) {return (n%2 != 0);}
+};
+
 /*
  * Our main will exercise some STL capabilities.
  * */
