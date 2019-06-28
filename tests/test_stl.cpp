@@ -149,7 +149,7 @@ int main() {
     /*
      * Here we are going to pass `is_odd()` to `find_if()`.
      * */
-    list<int>::iterator odd_iter = find_if(ilist.begin(), ilist.end(), is_odd);
+    list<int>::iterator odd_iter = find_if(ilist.begin(), ilist.end(), [](int n) {return (n%2 != 0);});
     /*
      * Here we are going to pass functor `IsOdd` to `find_if()`.
      * */
