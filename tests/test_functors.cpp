@@ -42,6 +42,10 @@ double square_func(double d, function<double(double)> f) {
     return f(d) * f(d);
 }
 
+double my_func(double d, function<double(double)> f) {
+    return pow(d, f(d));
+}
+
 
 int main() {
     // first functors:
@@ -65,4 +69,15 @@ int main() {
     d = square_func(0, [](double arg) {return tan(arg);});
     cout << "Square of tan 0 = " << d << endl;
     // you're call here!
+
+    d = my_func(1,[](double arg) {return pow(arg,arg);});
+    cout << "1 to the power of 1 to the power of 1 = " << d << endl;
+
+    d = my_func(2,[](double arg) {return pow(arg,arg);});
+    cout << "2 to the power of 2 to the power of 2 = " << d << endl;
+
+    d = my_func(3,[](double arg) {return pow(arg,arg);});
+    cout << "3 to the power of 3 to the power of 3 = " << d << endl;
+
+    
 }
