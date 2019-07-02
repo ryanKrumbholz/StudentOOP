@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <cmath>
 
@@ -20,7 +19,7 @@ class Fib {
                 memo[i] = NOT_CALCED;
         }
 
-        double operator()(int n) {
+        int operator()(int n) {
             if (memo[n] != NOT_CALCED) return memo[n];
 
             int result = 0;
@@ -56,10 +55,13 @@ int main() {
 
     // then lambdas -- use several functions from cmath here:
     // you're call here!
+    d = square_func(0, [](double arg) {return sin(arg);});
     cout << "Square of sin 0 = " << d << endl;
     // you're call here!
+    d = square_func(1, [](double arg) {return sin(arg);});
     cout << "Square of sin 1 = " << d << endl;
     // you're call here!
+    d = square_func(0, [](double arg) {return tan(arg);});
     cout << "Square of tan 0 = " << d << endl;
     // you're call here!
 }
